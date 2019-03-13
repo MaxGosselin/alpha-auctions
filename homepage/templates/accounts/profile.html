@@ -1,0 +1,12 @@
+{% extends "homepage/header.html" %}
+
+{% block top_text %}
+    {{user.username}}
+{% endblock %}
+
+
+{% block content %}
+    <p>Welcome to the Auction House {{user.username}}!</p></br>
+    <p>You are registered with team: {{user.team}}</p>
+
+{% endblock %}

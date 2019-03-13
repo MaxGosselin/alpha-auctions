@@ -1,0 +1,51 @@
+{% extends "homepage/header.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-sm-3">
+                <!-- Text blurb and New Auction form link -->
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <a class="btn btn-primary" href="/auctions/new/?asset={{ request.GET.asset }}" role="button">Post New Auction</a>
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <!-- Auctions list here -->
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Grade</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Region</th>
+                        <th scope="col">Current Bid</th>
+                        <th scope="col">Buy Now!</th>
+                        <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for lot in listings %}
+                        <tr>
+                            <td>{{ lot.asset_class }}</td>
+                            <td>{{ lot.grade }}</td>
+                            <td>{{ lot.quantity }}</td>
+                            <td>{{ lot.region }}</td>
+                            <td>{{ lot.high_bid }}</td>
+                            <td>{{ lot.buy_it_now_price }}</td>
+                            <td><a class="btn btn-success" href="/auctions/bid/?auction={{ lot.id }}" role="button">Bid</a>
+                                <a class="btn btn-success" href="/auctions/buynow/?auction={{ lot.id }}" role="button">Buy Now</a></td>
+
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+            </div>
+        </div>
+        <br>
+    </div>
+
+{% endblock %}

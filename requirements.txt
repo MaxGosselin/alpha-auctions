@@ -1,0 +1,6 @@
+Django
+django_registration
+django-notifications-hq
+django-crispy-forms
+whitenoise
+gunicorn
