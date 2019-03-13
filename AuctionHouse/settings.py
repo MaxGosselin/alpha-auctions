@@ -25,7 +25,7 @@ SECRET_KEY = '1g=6#1i=nd#1&fd^eduh-z7!h_46a#rg9gg!s_l-_nlnhiss!^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['alpha-auctions.herokuapp.com']
 
 
 # Application definition
