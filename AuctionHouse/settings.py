@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_registration',
     'notifications',
     'crispy_forms',
+    'dutch'
 ]
 
 MIDDLEWARE = [
