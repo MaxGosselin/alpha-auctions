@@ -2,7 +2,12 @@
 
 {% load crispy_forms_tags %}
 
+
+
 {% block content %}
+
+</br>
+<p>The site's TOS will be updated tomorrow, in short though the intent is: Transact honestly or be banned.</p>
 <form method="post" action="." novalidate>
   {% csrf_token %}
   {{ form|crispy }}

@@ -6,5 +6,5 @@ class UserForm(RegistrationFormTermsOfService):
     class Meta(RegistrationFormTermsOfService.Meta):
         model = User
         
-        fields = ['username', 'name', 'email', 'password1', 'password2', 'team', 'tos']
+        fields = ['username', 'name', 'phone', 'email', 'password1', 'password2', 'team', 'tos']
         # print(fields)
