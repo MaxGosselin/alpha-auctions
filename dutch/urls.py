@@ -4,7 +4,7 @@ from django.urls import include
 
 urlpatterns = [
 
-    url(r"^bid", views.submit_bid, name="submit_bid "),
-    
+    url(r"^$", views.submit_bid, name="submit_bid "),
+
     ]
     

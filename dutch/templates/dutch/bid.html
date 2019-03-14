@@ -1,23 +1,59 @@
-{% extends "homepage/header.html" %}
-{% load crispy_forms_tags %}
+<!DOCTYPE HTML>
+
 {% load staticfiles %}
 
-{% block titleblock %}
-{{ page_title }}
-{% endblock %}
+<html>
+	<head>
+        <title>Alpha Auctions</title>
+        <link rel="shortcut icon" href="{%  static 'homepage/img/favicon.ico' %}">
 
-{% block content %}
-
-{% if user.is_authenticated %}
-<form method="POST">
-    {% csrf_token %}
-    {{ form|crispy }}
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" href="{%  static 'homepage/assets/css/main.css' %}" />
+    </head>
     
-    <button type="submit" class="btn btn-success">Bid</button>
-</form>
+	<body class="is-preload">
 
-{% else %}
-    <p>You must be logged in to make a bid.</p>
-{% endif %}
+		<!-- Wrapper -->
+        <div id="wrapper">
 
-{% endblock %}
+            <!-- Intro -->
+                <section class="intro">
+                    <header>
+                        <h1>Join the fam</h1>
+                        
+                    </header>
+                    <div class="content">
+                        <br>
+                        <br>
+                        <br>
+                        <h2>The current bid is: {{ current }}</h2>
+                        <br>
+                        <p>Submit your bid to become an equity stakeholder.</p>
+                        {% load crispy_forms_tags %}
+
+                        <form method="post" action="." novalidate>
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            
+                            </br>
+                            <button type="submit" class="btn btn-success">Submit Bid</button>
+                        </form>
+
+                    </div>
+                </section>
+
+					
+		<!-- Scripts -->
+			<script src="{%  static 'homepage/assets/js/jquery.min.js' %}"></script>
+			<script src="{%  static 'homepage/assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{%  static 'homepage/assets/js/browser.min.js' %}"></script>
+			<script src="{%  static 'homepage/assets/js/breakpoints.min.js' %}"></script>
+			<script src="{%  static 'homepage/assets/js/util.js' %}"></script>
+			<script src="{%  static 'homepage/assets/js/main.js' %}"></script>
+
+	</body>
+
+</html>

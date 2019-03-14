@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 # Create your views here.
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
@@ -22,7 +20,7 @@ def submit_bid(request):
             form.instance.bidder = user
             # form.instance.price = form.instance.unit_price
         
-            if form.instance.price > dutch.lead_bid_price:
+            if form.instance.bid_price > dutch.lead_bid_price:
                 dutch.bidder = user
                 dutch.lead_bid_price = form.instance.bid_price
                
@@ -34,5 +32,5 @@ def submit_bid(request):
 
     context = {'form': form, 'page_title': f'Bid on equity in AA', 'current':dutch.lead_bid_price}
     
-    return render(request, 'dutch/bid.html',context=context)
+    return render(request, 'dutch/bid.html', context=context)
 
