@@ -33,15 +33,16 @@
                         <br>
                         <p>Submit your bid to become an equity stakeholder.</p>
                         {% load crispy_forms_tags %}
-
+                        {% if user.is_authenticated %}
                         <form method="post" action="." novalidate>
-                            {% csrf_token %}
-                            {{ form|crispy }}
-                            
+                            </br>
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                 
                             </br>
                             <button type="submit" class="btn btn-success">Submit Bid</button>
                         </form>
-
+                        {% endif %}    
                     </div>
                 </section>
 
