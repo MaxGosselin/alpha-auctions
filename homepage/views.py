@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from dutch.models import DutchAuction
+# from dutch.models import DutchAuction
 
 def home(request):
 

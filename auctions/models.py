@@ -52,11 +52,11 @@ class Auction(models.Model):
     region = models.CharField(max_length=10, choices=REGIONS, default='H')
     
     quantity = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10000000)], default=1)
-    unit_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.00)
-    buy_it_now_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.00)
+    unit_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.0)
+    buy_it_now_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.0)
 
     # bidder = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name="bidder", blank=True)
-    high_bid = models.DecimalField(max_digits=10, decimal_places=1, default=25.00)
+    high_bid = models.DecimalField(max_digits=10, decimal_places=1, default=25.0)
     high_bid_id = models.IntegerField(validators=[MinValueValidator(1)], null=True, blank=True)
 
     closing_date = models.DateTimeField(default=period_end, blank=True)

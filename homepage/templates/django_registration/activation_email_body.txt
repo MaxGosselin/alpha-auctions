@@ -4,7 +4,7 @@
 http://{{ site.domain }}{% url 'django_registration_activate' activation_key %}
 
 
-Don't forget to submit a bid for equity in Alpha Auctions at http://{{site.domain}}/dutch
+Don't forget to check out Alpha Auctions at http://{{site.domain}}
 
 
 {% blocktrans %}Link is valid for {{ expiration_days }} days.{% endblocktrans %}
