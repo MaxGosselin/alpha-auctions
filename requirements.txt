@@ -2,7 +2,6 @@ Django
 django_registration
 django-notifications-hq
 django-crispy-forms
-django-heroku
 dj-database-url
 whitenoise
 gunicorn
