@@ -1,0 +1,8 @@
+usage: manage.py dumpdata [-h] [--format FORMAT] [--indent INDENT]
+                          [--database DATABASE] [-e EXCLUDE]
+                          [--natural-foreign] [--natural-primary] [-a]
+                          [--pks PRIMARY_KEYS] [-o OUTPUT] [--version]
+                          [-v {0,1,2,3}] [--settings SETTINGS]
+                          [--pythonpath PYTHONPATH] [--traceback] [--no-color]
+                          [app_label[.ModelName] [app_label[.ModelName] ...]]
+manage.py dumpdata: error: ambiguous option: --natural could match --natural-foreign, --natural-primary

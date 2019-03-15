@@ -9,11 +9,15 @@ https://docs.djangoproject.com/en/2.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.1/ref/settings/
 """
+import django_heroku
 
 import os
+import dj_database_url
+
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))d
 
 AUTH_USER_MODEL = 'homepage.User'
 # Quick-start development settings - unsuitable for production
@@ -83,12 +87,18 @@ WSGI_APPLICATION = 'AuctionHouse.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+# DATABASES = {
+#     'default': dj_database_url.config(
+#         default=config('DATABASE_URL')
+#     )
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -153,3 +163,5 @@ EMAIL_HOST = os.environ.get('MAILGUN_SMTP_SERVER', '')
 EMAIL_PORT = os.environ.get('MAILGUN_SMTP_PORT', '')
 EMAIL_HOST_USER = os.environ.get('MAILGUN_SMTP_LOGIN', '')
 EMAIL_HOST_PASSWORD = os.environ.get('MAILGUN_SMTP_PASSWORD', '')
+
+django_heroku.settings(locals())
