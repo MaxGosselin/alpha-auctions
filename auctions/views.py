@@ -23,7 +23,7 @@ def auctions(request):
             form.instance.underlying_asset = a_class
         form.instance.asset_class = a_class
         form.instance.seller = request.user
-        form.instance.high_bid = round(form.instance.unit_price * 1.01, 2)
+        form.instance.high_bid = form.instance.unit_price
     
         form.save()
 
@@ -43,7 +43,7 @@ def new_auction(request):
                 form.instance.underlying_asset = a_class
             form.instance.asset_class = a_class
             form.instance.seller = request.user
-            form.instance.high_bid = round(form.instance.unit_price * 1.01, 2)
+            form.instance.high_bid = form.instance.unit_price
       
             form.save()
 

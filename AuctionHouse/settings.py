@@ -24,11 +24,12 @@ AUTH_USER_MODEL = 'homepage.User'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '1g=6#1i=nd#1&fd^eduh-z7!h_46a#rg9gg!s_l-_nlnhiss!^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['alpha-auctions.herokuapp.com', '127.0.0.1']
 
