@@ -4,6 +4,7 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
 {% load staticfiles %}
 
 <html>
@@ -16,7 +17,8 @@
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		<link rel="stylesheet" href="{%  static 'homepage/assets/css/main.css' %}" />
-    </head>
+	</head>
+	
     
 	<body class="is-preload">
 
@@ -26,8 +28,9 @@
 				<!-- Intro -->
 					<section class="intro">
 						<header>
-							<h1>Paradigm Shift</h1>
-							<p>Welcome to Alpha Auctions</br> An Intopia transaction platform by Alpha OG</a></p>
+							<h1>Alpha Auctions</h1>
+							<p>An Intopia transaction platform by Team 50 Alpha OG</a></p>
+							<p><a href="/accounts/login/">login</a> | <a href="accounts/register/">register</a></p>
 							<ul class="actions">
 								<li><a href="#first" class="arrow scrolly"><span class="label">Next</span></a></li>
 							</ul>
@@ -43,11 +46,11 @@
 							<h2>Who are we?</h2>
 						</header>
 						<div class="content">
-							<p><strong>Alpha Auctions</strong> is Team Alpha OG's innovative solution to help all members throughout Intopia weekend succeed.</p>
+							<p><strong>Alpha Auctions</strong> is Team Alpha OG's innovative solution to help all market participants throughout the Intopia simulation succeed.</p>
 
 							<ul class="feature-icons">
-									<li class="icon fa-globe">Open to all</li>
-									<li class="icon fa-bolt">Efficient Transaction</li>
+									<li class="icon fa-globe">Transparent and open to all</li>
+									<li class="icon fa-bolt">Efficient Transactions</li>
 									<li class="icon fa-balance-scale">Flat 1% transaction cost</li>
 							</ul>
 
@@ -62,7 +65,7 @@
 							<div class="gallery">
 								<img src="{%  static 'homepage/images/AuctionView.png' %}" class=img-fluid alt="Check out our wares." />
 							</div>
-							<p>On our platform: <em>Alpha Auctions</em>, registered teams will be able to purchase both X and Y, as well as Patents, Licenses, and Plants/Factories.</p>
+							<p>On our platform: <em>Alpha Auctions</em>, registered teams will be able to <strong>post and bid on auctions</strong> for both X and Y, as well as Patents, Licenses, and Plants/Factories.</p>
 							<p>With all auctions displayed in real time with transparent pricing, participants can confidently bid on the products they wish to acquire. Our website is user friendly, simply register and the bidding begins!</p>
 							<span></span>
 							<ul class="actions">
@@ -75,305 +78,22 @@
 
 					<section>
 						<header>
-							<h2>Get in on the ground floor</h2>
+							<h2>Alpha Financial Solutions</h2>
 						</header>
 						<div class="content">
 							<div class="gallery">
-								<img src="{%  static 'homepage/images/flying_ipo.png' %}" class=img-fluid alt="Dont miss the moon."/>
+								<img src="{%  static 'homepage/images/business-chart.png' %}" class=img-fluid alt="Dont miss the moon."/>
 							</div>
-						</br>
-							<h4>We want everyone to get a piece of the auction action, not just us!</h4>
-							<p>Tonight we are hosting an open <a href="https://www.investopedia.com/terms/d/dutchauction.asp">Dutch Auction</a> for a <strong>40% equity stake in Alpha Auctions.</strong></p>
-							<p>Equity ownership of one of the lots of 2.5% on offer entitles your team to your share of the retained earnings of Alpha Auctions</p>
-
-						</br>
-					<ul class="actions">
-							<li><a href='/accounts/register/' class="button primary">Sign up!</a></li>
-							<li><a href='/dutch/' class="button primary">View the Dutch Auction</a></li>
-						</ul>
-						</div>
-					</section>	
-				<!-- Section -->
-					<section>
-						<header>
-							<h2>about alpha auctions</h2>
-						</header>
-						<div class="content">
+						
 							<p>Alpha OG has decided to position itself in a unique manner throughout this year’s Intopia simulation. Rather than compete with teams, <strong>we’re looking to help you!</strong></p>
 							
-							<p>Together with our financial partners teams 27 and 37 we also offer a full range of market intelligence reports loans and private equity deals. Reach out to us for help with your finances!</p>
+							<p>Together with our financial partners teams 27 and 37 we also offer a full range financial products to suit your company's needs. From loans, market intelligence, consulting, and private equity deals. Reach out to us for help with your finances!</p>
+							<ul class="actions">
+								<li><a href="https://www.facebook.com/Alpha-Auctions-263877007880233/" class="button primary">Contact a financial specialist</a></li>
+							</ul>
 						</div>
 					</section>
 
-				<!-- Elements -->
-				<!--
-					<section>
-						<header>
-							<h2>Elements</h2>
-						</header>
-						<div class="content">
-
-							<section>
-								<header>
-									<h3>Text</h3>
-								</header>
-								<div class="content">
-									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-									<hr />
-									<h2>Heading Level 2</h2>
-									<h3>Heading Level 3</h3>
-									<h4>Heading Level 4</h4>
-									<h5>Heading Level 5</h5>
-									<hr />
-									<h5>Blockquote</h5>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-									<h5>Preformatted</h5>
-									<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-  print 'Iteration ' + i;
-  deck.shuffle();
-  i++;
-}
-
-print 'Sorted in ' + i + ' iterations.';</code></pre>
-								</div>
-							</section>
-
-							<section>
-								<header>
-									<h3>Lists</h3>
-								</header>
-								<div class="content">
-
-									<h4>Unordered</h4>
-									<ul>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Alternate</h4>
-									<ul class="alt">
-										<li>Dolor pulvinar etiam.</li>
-										<li>Sagittis adipiscing.</li>
-										<li>Felis enim feugiat.</li>
-									</ul>
-
-									<h4>Ordered</h4>
-									<ol>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis viverra.</li>
-										<li>Felis enim feugiat.</li>
-										<li>Dolor pulvinar etiam.</li>
-										<li>Etiam vel felis lorem.</li>
-										<li>Felis enim et feugiat.</li>
-									</ol>
-									<h4>Icons</h4>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-									</ul>
-
-									<h4>Actions</h4>
-									<ul class="actions">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions stacked">
-										<li><a href="#" class="button primary">Default</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-								</div>
-							</section>
-
-							<section>
-								<header>
-									<h3>Table</h3>
-								</header>
-								<div class="content">
-									<h4>Default</h4>
-									<div class="table-wrapper">
-										<table>
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-
-									<h4>Alternate</h4>
-									<div class="table-wrapper">
-										<table class="alt">
-											<thead>
-												<tr>
-													<th>Name</th>
-													<th>Description</th>
-													<th>Price</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>Item One</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Two</td>
-													<td>Vis ac commodo adipiscing arcu aliquet.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Three</td>
-													<td> Morbi faucibus arcu accumsan lorem.</td>
-													<td>29.99</td>
-												</tr>
-												<tr>
-													<td>Item Four</td>
-													<td>Vitae integer tempus condimentum.</td>
-													<td>19.99</td>
-												</tr>
-												<tr>
-													<td>Item Five</td>
-													<td>Ante turpis integer aliquet porttitor.</td>
-													<td>29.99</td>
-												</tr>
-											</tbody>
-											<tfoot>
-												<tr>
-													<td colspan="2"></td>
-													<td>100.00</td>
-												</tr>
-											</tfoot>
-										</table>
-									</div>
-								</div>
-							</section>
-
-							<section>
-								<header>
-									<h3>Buttons</h3>
-								</header>
-								<div class="content">
-									<ul class="actions">
-										<li><a href="#" class="button primary">Primary</a></li>
-										<li><a href="#" class="button">Default</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button large">Large</a></li>
-										<li><a href="#" class="button">Default</a></li>
-										<li><a href="#" class="button small">Small</a></li>
-									</ul>
-									<ul class="actions">
-										<li><a href="#" class="button primary icon fa-download">Icon</a></li>
-										<li><a href="#" class="button icon fa-download">Icon</a></li>
-									</ul>
-									<ul class="actions">
-										<li><span class="button primary disabled">Disabled</span></li>
-										<li><span class="button disabled">Disabled</span></li>
-									</ul>
-								</div>
-							</section>
-
-							<section>
-								<header>
-									<h3>Form</h3>
-								</header>
-								<div class="content">
-									<form method="post" action="#">
-										<div class="fields">
-											<div class="field half">
-												<label for="demo-name">Name</label>
-												<input type="text" name="demo-name" id="demo-name" value="" placeholder="Jane Doe" />
-											</div>
-											<div class="field half">
-												<label for="demo-email">Email</label>
-												<input type="email" name="demo-email" id="demo-email" value="" placeholder="jane@untitled.tld" />
-											</div>
-											<div class="field">
-												<label for="demo-category">Category</label>
-												<select name="demo-category" id="demo-category">
-													<option value="">-</option>
-													<option value="1">Manufacturing</option>
-													<option value="1">Shipping</option>
-													<option value="1">Administration</option>
-													<option value="1">Human Resources</option>
-												</select>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-												<label for="demo-priority-low">Low</label>
-											</div>
-											<div class="field half">
-												<input type="radio" id="demo-priority-high" name="demo-priority">
-												<label for="demo-priority-high">High</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-copy" name="demo-copy">
-												<label for="demo-copy">Email me a copy</label>
-											</div>
-											<div class="field half">
-												<input type="checkbox" id="demo-human" name="demo-human" checked>
-												<label for="demo-human">Not a robot</label>
-											</div>
-											<div class="field">
-												<label for="demo-message">Message</label>
-												<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-											</div>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send Message" class="primary" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</div>
-							</section>
-
-						</div>
-					</section>
-				-->
-
-				<!-- Section -->
 					<section>
 						<header>
 							<h2>Get in touch</h2>
@@ -409,16 +129,17 @@ print 'Sorted in ' + i + ' iterations.';</code></pre>
 									<a href="#">max@maxgosselin.com</a>
 								</li>
 								<li>
-									<h3>Facebook Group</h3>
-									<a href="#"></a>
-								</li>
-								
-								<li>
-									<h3>Elsewhere</h3>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="https://github.com/MaxGosselin/alpha-auctions" class="icon fa-github"><span class="label">GitHub</span></a></li>
-									</ul>
+										<h3>Facebook Group</h3>
+										<ul class="icons">
+											<li><a href="https://www.facebook.com/Alpha-Auctions-263877007880233/" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+										</ul>
+									</li>
+									
+									<li>
+										<h3>Github</h3>
+										<ul class="icons">											
+											<li><a href="https://github.com/MaxGosselin/alpha-auctions" class="icon fa-github"><span class="label">GitHub</span></a></li>
+										</ul>
 								</li>
 							</ul>
 						</footer>

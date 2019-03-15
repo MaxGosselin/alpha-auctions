@@ -1,12 +1,17 @@
 {% extends "homepage/header.html" %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block titleblock %}
+{{ page_title }}
+{% endblock %}
 
 {% block content %}
     <div class="container-fluid">
         <br>
         <div class="row">
             <div class="col">
-                <center><h3>DEMO MODE</h3></center>
+                <center><h3>{{ asset }} AUCTIONS BY ALPHA</h3></center>
             </div>
         </div>
         <div class="row">
@@ -16,41 +21,121 @@
 
                 </div>
                 <div class="row">
-                    <a class="btn btn-primary" href="/auctions/new/?asset={{ request.GET.asset }}" role="button">Post New Auction</a>
+                    <button type="button" class="btn btn-success " data-toggle="modal" data-target="#exampleModal">
+                    Make a New {{ a_class }} Auction
+                    </button>
                 </div>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-8">
                 <!-- Auctions list here -->
-                <table class="table">
+                
+                <table class="table table-striped">
                     <thead>
                         <tr>
-                        <th scope="col">Description</th>
-                        <th scope="col">Grade</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Region</th>
-                        <th scope="col">Current Bid</th>
-                        <th scope="col">Buy Now!</th>
-                        <th scope="col">Actions</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Grade</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Current Highest Bid</th>
+                            <th scope="col">Buy Now!</th>
+                            <th scope="col">Region</th>
+                            <th scope="col">Auction Expires</th>
+                            <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for lot in listings %}
-                        <tr>
-                            <td>{{ lot.asset_class }}</td>
-                            <td>{{ lot.grade }}</td>
-                            <td>{{ lot.quantity }}</td>
-                            <td>{{ lot.region }}</td>
-                            <td>{{ lot.high_bid }}</td>
-                            <td>{{ lot.buy_it_now_price }}</td>
-                            <td><a class="btn btn-success" href="/auctions/bid/?auction={{ lot.id }}" role="button">Bid</a>
-                                <a class="btn btn-success" href="/auctions/buynow/?auction={{ lot.id }}" role="button">Buy Now</a></td>
-
-                        </tr>
+                            {% if user.is_authenticated and lot.high_bid_id != user.id %}
+                            <tr>
+                                <td>{{ lot.asset_class }}</td>
+                                <td>{{ lot.grade }}</td>
+                                <td>{{ lot.quantity }}</td>
+                                <td>{{ lot.high_bid }}</td>
+                                <td>{{ lot.buy_it_now_price }}</td>
+                                <td>{{ lot.region }}</td>
+                                <td>{{ lot.closing_date }}</td>
+                                {% if lot.seller != user %}
+                                    <td>
+                                        <a class="btn btn-success" href="/auctions/bid/?auction={{ lot.id }}" role="button">Bid</a>
+                                        <a class="btn btn-success" href="/auctions/buynow/?auction={{ lot.id }}" role="button">Buy Now</a>
+                                    </td>
+                                {% else %}
+                                    <td>
+                                        <a class="btn btn-outline-secondary" href="#" role="button" >Bid </a>
+                                        <a class="btn btn-outline-secondary" href="#" role="button">Buy Now</a>
+                                    </td>
+                                {% endif %}    
+                            {% elif user.is_authenticated and lot.high_bid_id == user.id %}
+                            <tr class="table table-success">
+                            
+                                <td>{{ lot.asset_class }}</td>
+                                <td>{{ lot.grade }}</td>
+                                <td>{{ lot.quantity }}</td>
+                                <td>{{ lot.high_bid }}</td>
+                                <td>{{ lot.buy_it_now_price }}</td>
+                                <td>{{ lot.region }}</td>
+                                <td>{{ lot.closing_date }}</td>
+                                <td>
+                                    <a class="btn btn-outline-secondary" href="#" role="button">You're leading!</a>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr class="table table-striped">
+                            
+                                    <td>{{ lot.asset_class }}</td>
+                                    <td>{{ lot.grade }}</td>
+                                    <td>{{ lot.quantity }}</td>
+                                    <td>{{ lot.high_bid }}</td>
+                                    <td>{{ lot.buy_it_now_price }}</td>
+                                    <td>{{ lot.region }}</td>
+                                    <td>{{ lot.closing_date }}</td>
+                                    <td>
+                                        <a class="btn btn-outline-secondary" href="/accounts/register/" role="button">Sign up to register</a>
+                                    </td>
+                            </tr>
+                            {% endif %}
                         {% endfor %}
                     </tbody>
             </div>
+            <div class="col-sm-1">                    <!-- Text blurb and New Auction form link -->
+            </div>
         </div>
         <br>
+    </div>
+
+    <!-- Modal 1-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="POST" class="form" role="form">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% if user.is_authenticated %}
+                <div class="modal-body">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Create Auction</button>
+                </div>
+                {% else %}
+                <div class="modal-body">
+                    <p>You must be registered to post a new auction listing.</p>
+                    <p>
+                        <a class="btn btn-outline-success" href="/accounts/register/" role="button">Sign up to register</a>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+                </form>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
 {% endblock %}

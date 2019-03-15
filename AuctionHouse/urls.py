@@ -24,6 +24,6 @@ urlpatterns = [
     path('auctions/', include('auctions.urls')),
     path('banking/', include('banking.urls')),
     path('accounts/', include('homepage.urls')),
-    path('dutch/', include('dutch.urls')),
+    #path('dutch/', include('dutch.urls')),
     path('', include('homepage.urls')),
 ]

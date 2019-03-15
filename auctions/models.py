@@ -51,7 +51,7 @@ class Auction(models.Model):
     grade = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(30)], default=0)
     region = models.CharField(max_length=10, choices=REGIONS, default='H')
     
-    quantity = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(1000000)], default=1)
+    quantity = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(10000000)], default=1)
     unit_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.00)
     buy_it_now_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.00)
 

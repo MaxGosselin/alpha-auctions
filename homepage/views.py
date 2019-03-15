@@ -1,8 +1,11 @@
 from django.shortcuts import render
-# Create your views here.
+from dutch.models import DutchAuction
 
 def home(request):
-    return render(request, 'homepage/home.html')
+
+    context = {}
+
+    return render(request, 'homepage/home.html', context=context)
 
 def profile(request):
     return render(request, 'accounts/profile.html')

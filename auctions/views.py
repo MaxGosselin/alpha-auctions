@@ -6,20 +6,36 @@ from notifications.signals import notify
 from . import forms, models
 from auctions.models import Auction, Bid, Transaction
 
-UNDERLYING = ('LICENSE', 'PATENT', 'PLANT')
+DERIVS = ('LICENSE', 'PATENT', 'PLANT')
 
 def index(request):
     return render(request, 'auctions/index.html')
 
 def auctions(request):
-    lots = Auction.objects.filter(status__exact='OPEN').filter(asset_class__exact=request.GET.get('asset'))
-    return render(request, 'auctions/auctions.html', context= {'listings': lots})
+    
+    a_class = request.GET.get('asset')
+    lots = Auction.objects.filter(status__exact='OPEN').filter(asset_class__exact=a_class).order_by('high_bid')
+    deriv = True if a_class in DERIVS else False
+    
+    form = forms.NewAuctionForm(request.POST or None) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
+    if form.is_valid():
+        if not deriv:
+            form.instance.underlying_asset = a_class
+        form.instance.asset_class = a_class
+        form.instance.seller = request.user
+        form.instance.high_bid = round(form.instance.unit_price * 1.01, 2)
+    
+        form.save()
+
+    context = {'asset': a_class, 'form':form, 'page_title': f"{a_class} Auctions", 'listings': lots}
+    
+    return render(request, 'auctions/auctions.html', context=context)
 
 def new_auction(request):
     '''Simple form for adding a new auctions'''
 
     a_class = request.GET.get('asset')
-    deriv = True if a_class in UNDERLYING else False
+    deriv = True if a_class in DERIVS else False
     if request.POST:
         form = forms.NewAuctionForm(request.POST) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
         if form.is_valid():
@@ -27,7 +43,7 @@ def new_auction(request):
                 form.instance.underlying_asset = a_class
             form.instance.asset_class = a_class
             form.instance.seller = request.user
-            form.instance.high_bid = form.instance.unit_price
+            form.instance.high_bid = form.instance.unit_price * 1.01
       
             form.save()
 
@@ -36,7 +52,7 @@ def new_auction(request):
     else:
         form = forms.NewAuctionForm(request.POST) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
 
-    return render(request, 'auctions/new.html',context={'form': form, 'page_title': 'New auction'})
+    return render(request, 'auctions/new.html',context={'form': form, 'page_title': f"{a_class} Auctions"})
 
 def submit_bid(request):
     
@@ -54,7 +70,7 @@ def submit_bid(request):
 
             if form.instance.price > auction.high_bid:
                 auction.high_bid = form.instance.price
-                auction.high_bid_id = form.instance.id
+                auction.high_bid_id = user.id
 
                 if auction.high_bid > auction.buy_it_now_price:
                     auction.status = 'HELD'

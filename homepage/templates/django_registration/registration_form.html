@@ -5,15 +5,45 @@
 
 
 {% block content %}
+<div class="container">
+  
+  <div class="col col-centered" max_width="50%">
+    </br>
+    <h1>Welcome to Alpha Auctions</h1>
+    </br>
+    <h3><strong>Terms of Service</strong><h3>
+    </br>
+      <ul class="list">
+        <li>
+          <p>All Auctions on Alpha have a duration of <strong>1 hour.</strong> All open auctions will close 30 minutes before the end of the period.</p>
+        </li>
+        <li>
+          <p>All participants of the platform are subject to a <strong>1% transaction fee on all transactions.</strong></p>
+        </li>
+        <li>
+          <p>All auctions are binding for their duration. Assuring accurate listing, financial liquidity, and inventory availability is the user's sole responsibility.</p>
+        </li>
+        <li>
+          <p>The service is provided as is and free of charge. Team 50 is in no way liable for downtime to this service.</p>
+        </li>
+        <li>
+          <p>Use of another team's referral code entitles that team to a share of comission generated.</p>
+        </li>
+        <!-- <li>
+          <p></p>
+        </li> -->
+      </ul>
+    </br>
+    <form method="post" action="." novalidate>
+      {% csrf_token %}
+      {{ form|crispy }}
+      
 
-</br>
-<p>The site's TOS will be updated tomorrow, in short though the intent is: Transact honestly or be banned.</p>
-<form method="post" action="." novalidate>
-  {% csrf_token %}
-  {{ form|crispy }}
+      <button type="submit" class="btn btn-success">Register</button>
+    </form>
+  </div>
   
 
-  <button type="submit" class="btn btn-success">Register</button>
-</form>
+</div>
 {% endblock %}
  
