@@ -13,7 +13,12 @@ class NewDerivativeAuctionForm(forms.ModelForm):
     class Meta:
         model = Auction
         template_name = 'auctions/new.html'
-        fields = ['underlying_asset', 'unit_price', 'buy_it_now_price',]
+        fields = ['underlying_asset', 'unit_price', 'buy_it_now_price','grade', 'region',]
+
+    def __init__(self, *args, **kwargs):
+        super(NewDerivativeAuctionForm, self).__init__(*args, **kwargs)
+        self.fields['grade'].required = False
+        self.fields['region'].required = False
 
 class AuctionBidForm(forms.ModelForm):
     class Meta:
