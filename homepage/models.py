@@ -8,5 +8,5 @@ class User(AbstractUser):
     phone = models.CharField(max_length=20, default="613-555-555")
     member_level = models.CharField(max_length=20, default="")
     team = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(99)], default=98)
-    referral_code = models.CharField(max_length=20, default="")
+    referral_code = models.CharField(max_length=20, default="Max")
     # refferral = models.ForeignKey(, on_delete=models.CASCADE)

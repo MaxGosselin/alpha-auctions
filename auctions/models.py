@@ -85,14 +85,14 @@ class Bid(models.Model):
 
     def __str__(self):
         return f"Bid of {self.price} on Auction: {self.auction}) | Bid ID: {self.id}"
-    
+
 
 
 class Transaction(models.Model):
 
-    auction = models.ForeignKey(Auction, on_delete=models.CASCADE)
-    buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="t_buyer")
-    seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="t_seller")
+    t_auction = models.ForeignKey(Auction, on_delete=models.CASCADE)
+    t_buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="t_buyer")
+    t_seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="t_seller")
     t_status = models.CharField(max_length=10, choices=T_STATUSES, default="Processing")
 
     shipping = models.CharField(max_length=10, default="ground")
