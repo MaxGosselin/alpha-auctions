@@ -2,7 +2,7 @@ from django.utils import timezone
 import datetime
 import pytz
 
-PERIOD_CLOSES = datetime.datetime(2019, 3, 15, 3, 35, 0, 0, tzinfo=pytz.UTC)
+PERIOD_CLOSES = datetime.datetime(2019, 3, 15, 19, 30, 0, 0, tzinfo=pytz.UTC)
 
 def period_end():
 # 
