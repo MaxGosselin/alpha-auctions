@@ -5,6 +5,7 @@ from . import views, forms
 
 
 urlpatterns = [
+    url(r"^guide/$", views.guide, name="guide"),
     url(r"^accounts/profile/$", views.profile, name="profile"),
     url(r'^accounts/register/$',
         RegistrationView.as_view(

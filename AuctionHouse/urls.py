@@ -25,5 +25,6 @@ urlpatterns = [
     path('banking/', include('banking.urls')),
     path('accounts/', include('homepage.urls')),
     #path('dutch/', include('dutch.urls')),
+    path('guide/', include('homepage.urls')),
     path('', include('homepage.urls')),
 ]

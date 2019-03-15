@@ -7,5 +7,8 @@ def home(request):
 
     return render(request, 'homepage/home.html', context=context)
 
+def guide(request):
+    return render(request, 'accounts/profile.html')
+
 def profile(request):
     return render(request, 'accounts/profile.html')
