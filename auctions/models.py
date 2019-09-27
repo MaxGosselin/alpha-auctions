@@ -69,7 +69,7 @@ class Auction(models.Model):
         verbose_name_plural = 'Auctions'
 
     def __str__(self):
-        return f"An {self.asset_class} auction by {self.seller}! Current high bid: {self.high_bid} | Auction ID: {self.id}"
+        return f"An {self.asset_class} auction by {self.seller}! Current high bid: {self.high_bid} | Auction ID: {self.pk}"
     
     def get_absolute_url(self):
         return reverse('listings')
@@ -84,7 +84,7 @@ class Bid(models.Model):
         verbose_name_plural = 'Bids'
 
     def __str__(self):
-        return f"Bid of {self.price} on Auction: {self.auction}) | Bid ID: {self.id}"
+        return f"Bid of {self.price} on Auction: {self.auction}) | Bid ID: {self.pk}"
 
 
 
@@ -94,13 +94,13 @@ class Transaction(models.Model):
     t_buyer = models.ForeignKey(User, on_delete=models.CASCADE, related_name="t_buyer")
     t_seller = models.ForeignKey(User, on_delete=models.CASCADE, related_name="t_seller")
     t_status = models.CharField(max_length=10, choices=T_STATUSES, default="Processing")
-
+    t_price = models.DecimalField(max_digits=10, decimal_places=1, default=25.00)
     shipping = models.CharField(max_length=10, default="ground")
 
     class Meta:
         verbose_name_plural = 'Transactions'
 
     def __str__(self):
-        return f"{self.t_status} Transaction between {self.buyer} and {self.seller}) | Transaction ID: {self.id}; Auction: {self.auction}"
+        return f"{self.t_status} Transaction between {self.t_buyer} and {self.t_seller}) | Transaction ID: {self.pk}; Auction: {self.t_auction}"
     
 

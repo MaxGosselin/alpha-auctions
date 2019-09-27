@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
+from django.core.mail import send_mail
 from notifications.signals import notify
 
-from . import forms, models
+from . import forms, models, emails
 from auctions.models import Auction, Bid, Transaction
+
+
 
 DERIVS = ('LICENSE', 'PATENT', 'PLANT')
 
@@ -26,33 +29,34 @@ def auctions(request):
         form.instance.high_bid = form.instance.unit_price
     
         form.save()
+        send_mail('Auction posted!', emails.AUCTION_POSTED, 'auctioneer@mg.maxgosselin.com', [request.user.email,])
+
 
     context = {'asset': a_class, 'form':form, 'page_title': f"{a_class} Auctions", 'listings': lots}
     
     return render(request, 'auctions/auctions.html', context=context)
 
-def new_auction(request):
-    '''Simple form for adding a new auctions'''
+# def new_auction(request):
+#     '''Simple form for adding a new auctions'''
 
-    a_class = request.GET.get('asset')
-    deriv = True if a_class in DERIVS else False
-    if request.POST:
-        form = forms.NewAuctionForm(request.POST) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
-        if form.is_valid():
-            if not deriv:
-                form.instance.underlying_asset = a_class
-            form.instance.asset_class = a_class
-            form.instance.seller = request.user
-            form.instance.high_bid = form.instance.unit_price
-      
-            form.save()
-
-            return redirect(f'/auctions/listings?asset={a_class}')
+#     a_class = request.GET.get('asset')
+#     deriv = True if a_class in DERIVS else False
+#     if request.POST:
+#         form = forms.NewAuctionForm(request.POST) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
+#         if form.is_valid():
+#             if not deriv:
+#                 form.instance.underlying_asset = a_class
+#             form.instance.asset_class = a_class
+#             form.instance.seller = request.user
+#             form.instance.high_bid = form.instance.unit_price
+     
+#             form.save()
+#             return redirect(f'/auctions/listings?asset={a_class}')
     
-    else:
-        form = forms.NewAuctionForm(request.POST) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
+#     else:
+#         form = forms.NewAuctionForm(request.POST) if not deriv else forms.NewDerivativeAuctionForm(request.POST)
 
-    return render(request, 'auctions/new.html',context={'form': form, 'page_title': f"{a_class} Auctions"})
+#     return render(request, 'auctions/new.html',context={'form': form, 'page_title': f"{a_class} Auctions"})
 
 def submit_bid(request):
     
@@ -76,14 +80,15 @@ def submit_bid(request):
                     auction.status = 'HELD'
 
                     transaction = Transaction.objects.create(
-                        auction=auction, buyer=user,
-                        seller=auction.seller, shipping=form.instance.shipping,
+                        t_auction=auction, t_buyer=request.user,
+                        t_seller=auction.seller, shipping=form.instance.shipping,
+                        t_price=auction.high_bid,
                         )
-
+                    emails.transaction_notify(transaction)
 
                 form.save()
                 auction.save()
-                notify.send(user, recipient=user, verb="Your bid was accepted!")
+            
 
                 return redirect(f'/auctions/listings?asset={auction.asset_class}')
             
@@ -113,10 +118,11 @@ def submit_buynow(request):
             form.save()
             auction.save()
             transaction = Transaction.objects.create(
-                        auction=auction, buyer=request.user,
-                        seller=auction.seller, shipping=form.instance.shipping,
+                        t_auction=auction, t_buyer=request.user,
+                        t_seller=auction.seller, shipping=form.instance.shipping,
+                        t_price=auction.buy_it_now_price,
                         )
-
+            emails.transaction_notify(transaction)
 
             return redirect(f'/auctions/listings?asset={auction.asset_class}')
             
