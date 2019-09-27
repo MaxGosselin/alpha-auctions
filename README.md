@@ -5,13 +5,15 @@
 In the context of ADM4352 I built an auction service in a couple days using Django and Heroku for deployment. The code is rough as heck but I encourage any Telfer student to take up the cause.
 Feel free to reach out if you have any questions.
 
+You can check out the site here: https://alpha-auctions.herokuapp.com/
+
 *Rough installation instructions:*
 
   - clone this repo to heroku
-  - add a mysql instance
+  - add a postgres instance (and mailgun if you want to really use it)
   - deploy
   
-This probably wont be so simple, google's your friend here.
+It probably wont be so simple, google's your friend here.
 
 ----
 
