@@ -1,6 +1,6 @@
 # alpha-auctions
 
-###Intopia Winter 2019 Auction House by Max Gosselin
+**Intopia Winter 2019 Auction House by Max Gosselin**
 
 In the context of ADM4352 I built an auction service in a couple days using Django and Heroku for deployment. The code is rough as heck but I encourage any Telfer student to take up the cause.
 Feel free to reach out if you have any questions.
